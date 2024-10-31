@@ -29,7 +29,6 @@ const TablaLiga = () => {
 
     return (
         <div className="tabla-liga-contenedor">
-            <h1 className="titulo-liga">Clasificación de la Liga</h1>
             {cargando ? (
                 <p className="mensaje-cargando">Cargando datos de la liga...</p>
             ) : error ? (
