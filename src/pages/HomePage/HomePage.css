@@ -6,4 +6,5 @@
   box-sizing: border-box;
   background: url('/src/assets/images/cesped.jpg') no-repeat center center fixed;
   background-size: cover;
+  padding: 5%;
 }

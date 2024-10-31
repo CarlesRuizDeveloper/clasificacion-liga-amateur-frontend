@@ -39,8 +39,8 @@ const TablaLiga = () => {
                         <table className="tabla-liga-table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Equipo</th>
+                                    <th></th>
+                                    <th className="titulo-equipo">Equipo</th>
                                     <th>Pts</th>
                                 </tr>
                             </thead>
