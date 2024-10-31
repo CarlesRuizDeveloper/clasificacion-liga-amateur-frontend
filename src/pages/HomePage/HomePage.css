@@ -1,10 +1,10 @@
 .home-page {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    box-sizing: border-box;
-    background: url('/src/assets/images/cesped.jpg') no-repeat center center fixed;
-    background-size: cover;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  box-sizing: border-box;
+  background: url('/src/assets/images/cesped.jpg') no-repeat center center fixed;
+  background-size: cover;
+  padding: 5%;
+}

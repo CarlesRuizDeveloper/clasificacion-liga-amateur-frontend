@@ -29,7 +29,6 @@ const TablaLiga = () => {
 
     return (
         <div className="tabla-liga-contenedor">
-            <h1 className="titulo-liga">Clasificación de la Liga</h1>
             {cargando ? (
                 <p className="mensaje-cargando">Cargando datos de la liga...</p>
             ) : error ? (
@@ -40,8 +39,8 @@ const TablaLiga = () => {
                         <table className="tabla-liga-table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
-                                    <th>Equipo</th>
+                                    <th></th>
+                                    <th className="titulo-equipo">Equipo</th>
                                     <th>Pts</th>
                                 </tr>
                             </thead>
