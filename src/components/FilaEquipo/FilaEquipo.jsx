@@ -14,7 +14,7 @@ const FilaEquipo = ({ equipo, index }) => {
                         />
                         {equipo.nombre}
                     </td>
-                    <td>{equipo.puntos || 0}</td>
+                    <td className="pts">{equipo.puntos || 0}</td>
                 </>
             ) : (
                 <>

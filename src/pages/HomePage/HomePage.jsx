@@ -1,11 +1,17 @@
 import React from 'react';
-import TablaLiga from '../../components/TablaLiga/TablaLiga'; 
+import TablaLiga from '../../components/TablaLiga/TablaLiga';
+import TablaJornada from '../../components/TablaJornada/TablaJornada';
 import './HomePage.css';
 
 const HomePage = () => {
     return (
         <div className="home-page">
-            <TablaLiga />
+            <div className="jornada-container">
+                <TablaJornada />
+            </div>
+            <div className="clasificacion-container">
+                <TablaLiga />
+            </div>
         </div>
     );
 };
