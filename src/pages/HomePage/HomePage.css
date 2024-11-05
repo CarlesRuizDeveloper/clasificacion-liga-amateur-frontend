@@ -5,7 +5,18 @@
   justify-content: center;
   min-height: 100vh;
   box-sizing: border-box;
+  width: 100%; 
+  max-width: 1200px; 
   background: url('/src/assets/images/cesped.jpg') no-repeat center center fixed;
   background-size: cover;
-  padding: 5%;
+  padding: 20px; 
+  overflow: hidden; 
+}
+
+
+.jornada-container,
+.clasificacion-container {
+  width: 98%;
+  max-width: 1200px; 
+  margin-bottom: 20px; 
 }

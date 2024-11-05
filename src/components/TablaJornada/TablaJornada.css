@@ -22,6 +22,37 @@
     width: 100%;
 }
 
+/* Ajustes específicos para la tabla jornada usando nth-child */
+.tabla-jornada th:nth-child(1),
+.tabla-jornada td:nth-child(1) {
+    width: 15%;
+}
+
+.tabla-jornada th:nth-child(2),
+.tabla-jornada td:nth-child(2) {
+    width: 70%;
+}
+
+.tabla-jornada th:nth-child(3),
+.tabla-jornada td:nth-child(3) {
+    width: 15%;
+}
+
+.tabla-jornada th:nth-child(4),
+.tabla-jornada td:nth-child(4) {
+    width: 15%;
+}
+
+.tabla-jornada th:nth-child(5),
+.tabla-jornada td:nth-child(5) {
+    width: 70%;
+}
+
+.tabla-jornada th:nth-child(6),
+.tabla-jornada td:nth-child(6) {
+    width: 15%;
+}
+
 th, td {
     padding: 8px;
     text-align: center;

@@ -1,44 +1,33 @@
 .fila-partido {
-    font-size: 0.9rem;
-    text-align: center;
+  font-size: 0.9rem;
+  text-align: left;
 }
 
-.escudo-equipo-td,
-.nombre-equipo-td,
-.resultado-partido {
-    padding: 10px;
-    border-bottom: 1px solid #ddd;
-}
-
-.escudo-equipo-td {
-    width: 5%;
-}
-
-.nombre-equipo-td {
-    width: 20%;
-    text-align: left;
-    font-weight: bold;
-}
-
-.resultado-partido {
-    width: 10%;
-    font-weight: bold;
-    text-align: center;
+.nombre-equipo-td{
+  max-width: 50px;
 }
 
 .escudo-equipo {
-    width: 30px;
-    height: 30px;
+  width: 30px;
+  height: 30px;
 }
 
-@media (max-width: 600px) {
-    .escudo-equipo {
-        width: 20px;
-        height: 20px;
-    }
+.resultado-partido {
+  text-align: center;
+  font-weight: bold;
+  min-width: 60px;
+}
 
-    td {
-        font-size: 0.8rem;
-        padding: 8px;
-    }
+
+@media (min-width: 600px) {
+  .escudo-equipo {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+  }
+
+  td {
+    font-size: 0.8rem;
+    padding: 8px;
+  }
 }
