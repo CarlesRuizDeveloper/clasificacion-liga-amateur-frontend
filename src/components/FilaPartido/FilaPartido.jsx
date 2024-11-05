@@ -8,7 +8,7 @@ const FilaPartido = ({ partido }) => {
                 <img
                     src={partido.equipo_local.escudo_url}
                     alt={`Escudo de ${partido.equipo_local.nombre}`}
-                    className="escudo-equipo"
+                    className="escudo-equipo-local"
                 />
             </td>
             <td className="nombre-equipo-td">{partido.equipo_local.nombre}</td>
@@ -22,7 +22,7 @@ const FilaPartido = ({ partido }) => {
                 <img
                     src={partido.equipo_visitante.escudo_url}
                     alt={`Escudo de ${partido.equipo_visitante.nombre}`}
-                    className="escudo-equipo"
+                    className="escudo-equipo-visitante"
                 />
             </td>
         </tr>

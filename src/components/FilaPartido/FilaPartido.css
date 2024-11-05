@@ -7,9 +7,17 @@
   max-width: 50px;
 }
 
-.escudo-equipo {
+.escudo-equipo-local, .escudo-equipo-visitante {
   width: 30px;
   height: 30px;
+}
+
+.escudo-equipo-visitante {
+  margin-left: 10px;
+}
+
+.escudo-equipo-td {
+width: 10%;
 }
 
 .resultado-partido {
@@ -20,10 +28,15 @@
 
 
 @media (min-width: 600px) {
-  .escudo-equipo {
-    width: 20px;
-    height: 20px;
-    margin-right: 5px;
+  .escudo-equipo-local {
+    width: 50px;
+    height: 50px;
+  }
+
+  .escudo-equipo-visitante {
+    width: 50px;
+    height: 50px;
+    margin-left: 5px;
   }
 
   td {
