@@ -1,9 +1,9 @@
 .tabla-liga-contenedor {
-  max-width: 70%;  
-  max-width: 1100px; 
-  margin: 0 auto;   
+  max-width: 70%;
+  max-width: 1100px;
+  margin: 0 auto;
   padding: 10px;
-  background-color: rgba(255, 255, 255, 0.6); 
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.9);
 }
@@ -37,12 +37,29 @@
   width: 100%;
 }
 
-th, td {
-  padding: 8px;
+.fila-equipo td,
+.tabla-liga-table td {
+  padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
-  font-size: 0.6rem; 
-  height: 20px;
+  font-size: 0.7rem;
+  min-height: 45px;  
+  height: 45px;  
+}
+
+.tabla-liga th:nth-child(1),
+.tabla-liga td:nth-child(1) {
+  width: 5%;
+}
+
+.tabla-liga th:nth-child(2),
+.tabla-liga td:nth-child(2) {
+  width: 70%;
+}
+
+.tabla-liga th:nth-child(3),
+.tabla-liga td:nth-child(3) {
+  width: 15%;
 }
 
 .nombre-equipo {
@@ -51,42 +68,41 @@ th, td {
   font-weight: bold;
 }
 
-.pts{
+.pts {
   font-weight: bold;
   font-size: 0.8rem;
 }
+
 .escudo-equipo {
-  width: 20%;
-  margin-right: 20%;
-}
-
-th:nth-child(1),
-td:nth-child(1) {
-  width: 10%; 
-}
-
-th:nth-child(2),
-td:nth-child(2) {
-  width: 80%; 
-}
-
-th:nth-child(3),
-td:nth-child(3) {
-  width: 10%; 
+  width: 50px;
+  height: 50px;
 }
 
 @media (min-width: 600px) {
   .escudo-equipo {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
+    width: 40px;
+    height: 40px;
   }
 
-  th, td {
-    padding: 8px;
+  th,
+  td,
+  .fila-equipo td {
+    padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
-    font-size: 0.8rem; 
-    height: 30px;
+    font-size: 0.9rem;
+    min-height: 50px; 
+    height: 50px;
+  }
+}
+
+@media (min-width: 890px) {
+  .clasificacion-container {
+    min-width: 825px;
+  }
+
+  .escudo-equipo {
+    width: 50px;
+    height: 50px;
   }
 }

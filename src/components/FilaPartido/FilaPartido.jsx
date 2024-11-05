@@ -1,35 +1,28 @@
-import React from "react";
+import React from 'react';
 import './FilaPartido.css';
 
 const FilaPartido = ({ partido }) => {
     return (
         <tr className="fila-partido">
-            {/* Equipo Local: Escudo y Nombre en celdas separadas */}
             <td className="escudo-equipo-td">
                 <img
-                    src={partido.escudoLocal}
-                    alt={`Escudo de ${partido.equipoLocal}`}
-                    className="escudo-equipo"
+                    src={partido.equipo_local.escudo_url}
+                    alt={`Escudo de ${partido.equipo_local.nombre}`}
+                    className="escudo-equipo-local"
                 />
             </td>
-            <td className="nombre-equipo-td">
-                {partido.equipoLocal}
-            </td>
-
-            {/* Resultado del partido */}
+            <td className="nombre-equipo-td">{partido.equipo_local.nombre}</td>
             <td className="resultado-partido">
-                {partido.golesLocal} - {partido.golesVisitante}
+                {partido.goles_local !== null && partido.goles_visitante !== null
+                    ? `${partido.goles_local} - ${partido.goles_visitante}`
+                    : 'Por jugar'}
             </td>
-
-            {/* Equipo Visitante: Nombre y Escudo en celdas separadas */}
-            <td className="nombre-equipo-td">
-                {partido.equipoVisitante}
-            </td>
+            <td className="nombre-equipo-td">{partido.equipo_visitante.nombre}</td>
             <td className="escudo-equipo-td">
                 <img
-                    src={partido.escudoVisitante}
-                    alt={`Escudo de ${partido.equipoVisitante}`}
-                    className="escudo-equipo"
+                    src={partido.equipo_visitante.escudo_url}
+                    alt={`Escudo de ${partido.equipo_visitante.nombre}`}
+                    className="escudo-equipo-visitante"
                 />
             </td>
         </tr>

@@ -1,0 +1,23 @@
+.escudo-equipo-clasificacion{
+    width: 30px;
+    margin-right: 20%;
+    
+}
+
+@media (min-width: 600px) {
+
+    .escudo-equipo-clasificacion{
+        width: 40px;
+        margin-right: 20%;
+        
+    }
+}
+
+@media (min-width: 852px) {
+
+    .escudo-equipo-clasificacion{
+        width: 45px;
+        margin-right: 20%;
+        
+    }
+}

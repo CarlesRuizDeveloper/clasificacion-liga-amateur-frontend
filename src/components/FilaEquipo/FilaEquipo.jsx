@@ -1,16 +1,17 @@
 import React from 'react';
+import './FilaEquipo.css';
 
 const FilaEquipo = ({ equipo, index }) => {
     return (
         <tr className="fila-equipo">
             {typeof index !== 'undefined' ? (
                 <>
-                    <td>{index + 1}</td>
+                    <td className='posicion'>{index + 1}</td>
                     <td className="nombre-equipo">
                         <img
                             src={equipo.escudo_url}
                             alt={`Escudo de ${equipo.nombre}`}
-                            className="escudo-equipo"
+                            className="escudo-equipo-clasificacion"
                         />
                         {equipo.nombre}
                     </td>

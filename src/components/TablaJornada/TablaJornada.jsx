@@ -1,57 +1,55 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import FilaPartido from '../FilaPartido/FilaPartido';
 import './TablaJornada.css';
 
-const partidosFalsos = [
-    { 
-        id: 1, 
-        equipoLocal: "CE ÀGORA \"A\"", 
-        golesLocal: 2, 
-        escudoLocal: "/path/to/escudo_equipo_1.png",
-        equipoVisitante: "EF CAN BOADA 'A'", 
-        golesVisitante: 1,
-        escudoVisitante: "/path/to/escudo_equipo_2.png" 
-    },
-    { 
-        id: 2, 
-        equipoLocal: "CFCS JUAN XXIII _ PREBENJAMIN C", 
-        golesLocal: 0, 
-        escudoLocal: "/path/to/escudo_equipo_3.png",
-        equipoVisitante: "CP SAN CRISTOBAL C", 
-        golesVisitante: 0,
-        escudoVisitante: "/path/to/escudo_equipo_4.png" 
-    },
-    { 
-        id: 3, 
-        equipoLocal: "CE LA FARGA XXI \"A\" (2017)", 
-        golesLocal: 3, 
-        escudoLocal: "/path/to/escudo_equipo_5.png",
-        equipoVisitante: "CE LA FARGA XXI \"B\" (2017)", 
-        golesVisitante: 2,
-        escudoVisitante: "/path/to/escudo_equipo_6.png" 
-    },
-];
-
 const TablaJornada = () => {
+    const [partidos, setPartidos] = useState([]);
+    const [cargando, setCargando] = useState(true);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        const obtenerPartidos = async () => {
+            try {
+                setCargando(true);
+                const respuesta = await fetch('http://localhost:8000/api/partidos?jornada=1');
+                
+                if (!respuesta.ok) {
+                    throw new Error('Error al obtener los partidos');
+                }
+
+                const datos = await respuesta.json();
+                setPartidos(datos);
+            } catch (error) {
+                setError(error.message);
+            } finally {
+                setCargando(false);
+            }
+        };
+
+        obtenerPartidos();
+    }, []);
+
     return (
         <div className="tabla-jornada-contenedor">
-            <h2 className="titulo-jornada">Partidos de la Jornada</h2>
-            <table className="tabla-jornada-table">
-                <thead>
-                    <tr>
-                        <th>Local</th>
-                        <th>Local</th>
-                        <th>Resultado</th>
-                        <th>Visitante</th>
-                        <th>Visitante</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {partidosFalsos.map(partido => (
-                        <FilaPartido key={partido.id} partido={partido} />
-                    ))}
-                </tbody>
-            </table>
+            <h2 className="titulo-jornada">Partidos de la Jornada 1</h2>
+            {cargando ? (
+                <p className="mensaje-cargando">Cargando datos de los partidos...</p>
+            ) : error ? (
+                <p className="mensaje-error">{error}</p>
+            ) : (
+                <table className="tabla-jornada-table">
+                    <thead>
+                        <tr>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {partidos.map(partido => (
+                            <FilaPartido key={partido.id} partido={partido} />
+                        ))}
+                    </tbody>
+                </table>
+            )}
         </div>
     );
 };

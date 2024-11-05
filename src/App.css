@@ -1,20 +1,29 @@
 #root {
-  max-width: 1280px;
+  max-width: 98%;  
   margin: 0 auto;
   text-align: center;
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-sizing: border-box;
 }
 
 html, body {
   height: 100%;
   margin: 0;
   font-family: Arial, sans-serif;
+  overflow-x: hidden; 
 }
 
 body {
   background: url('./assets/images/cesped.jpg') no-repeat center center fixed;
   background-size: cover;
+}
+
+@media (min-width: 768px) {
+  #root {
+    max-width: 1280px; 
+    padding: 0 20px;  
+  }
 }
