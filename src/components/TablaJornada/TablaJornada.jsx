@@ -11,7 +11,6 @@ const TablaJornada = () => {
         const obtenerPartidos = async () => {
             try {
                 setCargando(true);
-                // Realiza la solicitud a la API para obtener la jornada 1
                 const respuesta = await fetch('http://localhost:8000/api/partidos?jornada=1');
                 
                 if (!respuesta.ok) {
