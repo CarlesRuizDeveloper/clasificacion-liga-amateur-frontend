@@ -10,6 +10,25 @@
     overflow: hidden;
 }
 
+.selector-jornada-contenedor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.selector-jornada {
+    padding: 8px;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: none;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+    background-color: rgba(148, 199, 155, 0.1);
+    color: #333;
+    font-weight: bold;
+    margin-top: 3%;
+}
+
 .titulo-jornada {
     text-align: center;
     margin-bottom: 20px;

@@ -19,14 +19,14 @@
 }
 
 .tabla-liga-fijo {
-  width: 70%;
+  width: 69%;
   border: none;
   flex: 0 0 auto;
   font-weight: bolder;
 }
 
 .tabla-liga-desplazable {
-  width: 30%;
+  width: 31%;
   overflow-x: auto;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0 20px 20px 0;
