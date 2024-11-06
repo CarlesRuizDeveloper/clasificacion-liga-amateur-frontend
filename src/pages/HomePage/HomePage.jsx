@@ -12,6 +12,12 @@ const HomePage = () => {
             <div className="clasificacion-container">
                 <TablaLiga />
             </div>
+            <footer className="footer">
+                <p>Desarrollado por <span>Carles Ruiz</span></p>
+                <a href="https://www.linkedin.com/in/carles-ruiz-montejo-developer/" target="_blank" rel="noopener noreferrer">
+                    <i className="fab fa-linkedin linkedin-icon"></i>
+                </a>
+            </footer>
         </div>
     );
 };

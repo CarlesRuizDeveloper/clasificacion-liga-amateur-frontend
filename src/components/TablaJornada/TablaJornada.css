@@ -53,6 +53,7 @@ th, td {
 .escudo-equipo {
     width: 30px;
     height: 30px;
+    margin-right: 20%;
 }
 
 @media (min-width: 600px) {
@@ -67,6 +68,6 @@ th, td {
     .escudo-equipo {
         width: 30px;
         height: 30px;
-        margin-right: 10px;
+        margin-right: 10%;
     }
 }
