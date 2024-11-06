@@ -1,35 +1,35 @@
 import React from 'react';
 import './FilaEquipo.css';
 
-const FilaEquipo = ({ equipo, index }) => {
-    return (
-        <tr className="fila-equipo">
-            {typeof index !== 'undefined' ? (
-                <>
-                    <td className='posicion'>{index + 1}</td>
-                    <td className="nombre-equipo">
-                        <img
-                            src={equipo.escudo_url}
-                            alt={`Escudo de ${equipo.nombre}`}
-                            className="escudo-equipo-clasificacion"
-                        />
-                        {equipo.nombre}
-                    </td>
-                    <td className="pts">{equipo.puntos || 0}</td>
-                </>
-            ) : (
-                <>
-                    <td>{equipo.partidos_jugados || 0}</td>
-                    <td>{equipo.partidos_ganados || 0}</td>
-                    <td>{equipo.partidos_empatados || 0}</td>
-                    <td>{equipo.partidos_perdidos || 0}</td>
-                    <td>{equipo.goles_a_favor || 0}</td>
-                    <td>{equipo.goles_en_contra || 0}</td>
-                    <td>{equipo.diferencia_goles || 0}</td>
-                </>
-            )}
-        </tr>
-    );
+const FilaEquipo = ({ equipo, index, tipo }) => {
+    if (tipo === "fijo") {
+        return (
+            <tr className="fila-equipo">
+                <td>{index + 1}</td>
+                <td className="nombre-equipo">
+                    <img src={equipo.escudo_url} alt={`Escudo de ${equipo.equipo}`} className="escudo-equipo" />
+                    {equipo.equipo}
+                </td>
+                <td className="pts">{equipo.pts}</td>
+            </tr>
+        );
+    }
+
+    if (tipo === "desplazable") {
+        return (
+            <tr className="fila-equipo">
+                <td>{equipo.pj}</td>
+                <td>{equipo.pg}</td>
+                <td>{equipo.pe}</td>
+                <td>{equipo.pp}</td>
+                <td>{equipo.gf}</td>
+                <td>{equipo.gc}</td>
+                <td>{equipo.dg}</td>
+            </tr>
+        );
+    }
+
+    return null; 
 };
 
 export default FilaEquipo;

@@ -8,12 +8,12 @@ const TablaLiga = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        const obtenerEquipos = async () => {
+        const obtenerClasificacion = async () => {
             try {
                 setCargando(true);
-                const respuesta = await fetch('http://localhost:8000/api/equipos');
+                const respuesta = await fetch('http://localhost:8000/api/clasificacion/ultima');
                 if (!respuesta.ok) {
-                    throw new Error('Error al obtener los datos de los equipos');
+                    throw new Error('Error al obtener los datos de la clasificación de la última jornada');
                 }
                 const datos = await respuesta.json();
                 setEquipos(datos);
@@ -24,7 +24,7 @@ const TablaLiga = () => {
             }
         };
 
-        obtenerEquipos();
+        obtenerClasificacion();
     }, []);
 
     return (
@@ -46,7 +46,7 @@ const TablaLiga = () => {
                             </thead>
                             <tbody>
                                 {equipos.map((equipo, index) => (
-                                    <FilaEquipo key={equipo.id} equipo={equipo} index={index} />
+                                    <FilaEquipo key={`fijo-${equipo.equipo}`} equipo={equipo} index={index} tipo="fijo" />
                                 ))}
                             </tbody>
                         </table>
@@ -65,8 +65,8 @@ const TablaLiga = () => {
                                 </tr>
                             </thead>
                             <tbody>
-                                {equipos.map((equipo) => (
-                                    <FilaEquipo key={equipo.id} equipo={equipo} />
+                                {equipos.map((equipo, index) => (
+                                    <FilaEquipo key={`desplazable-${equipo.equipo}`} equipo={equipo} index={index} tipo="desplazable" />
                                 ))}
                             </tbody>
                         </table>
