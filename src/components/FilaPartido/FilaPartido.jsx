@@ -3,7 +3,7 @@ import { AuthContext } from '../../context/AuthContext';
 import './FilaPartido.css';
 
 const FilaPartido = ({ partido }) => {
-    const { isAuthenticated } = useContext(AuthContext);
+    const { isAuthenticated } = useContext(AuthContext); 
     const [editando, setEditando] = useState(false);
     const [golesLocal, setGolesLocal] = useState(partido.goles_local);
     const [golesVisitante, setGolesVisitante] = useState(partido.goles_visitante);
@@ -12,9 +12,34 @@ const FilaPartido = ({ partido }) => {
         setEditando(true);
     };
 
-    const handleGuardarClick = () => {
-       
-        setEditando(false);
+    const handleGuardarClick = async () => {
+        try {
+            const response = await fetch(`http://localhost:8000/api/partidos/${partido.id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`, 
+                },
+                body: JSON.stringify({
+                    equipo_local_id: partido.equipo_local_id,
+                    equipo_visitante_id: partido.equipo_visitante_id,
+                    fecha: partido.fecha,
+                    hora: partido.hora,
+                    goles_local: golesLocal,
+                    goles_visitante: golesVisitante,
+                }),
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al guardar los cambios');
+            }
+
+            alert('Cambios guardados correctamente');
+            setEditando(false);
+        } catch (error) {
+            console.error('Error al guardar los cambios:', error);
+            alert('Hubo un error al guardar los cambios');
+        }
     };
 
     return (
