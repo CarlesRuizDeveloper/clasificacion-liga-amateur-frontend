@@ -56,6 +56,31 @@ th, td {
     margin-right: 20%;
 }
 
+.editar-resultados-icono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    cursor: pointer;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.editar-resultados-icono:hover {
+    color: #0056b3; 
+}
+
+.editar-resultados-icono i {
+    font-size: 2rem;
+    margin-right: 8px;
+}
+
+.editar-resultados-icono p {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
 @media (min-width: 600px) {
     th, td {
         padding: 8px;
