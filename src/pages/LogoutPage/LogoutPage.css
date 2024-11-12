@@ -1,0 +1,40 @@
+.logout-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+}
+
+.logout-confirmation {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.logout-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.logout-button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.logout-button.confirm {
+    background-color: #d9534f;
+    color: white;
+    margin-right: 10px;
+}
+
+.logout-button.cancel {
+    background-color: #5bc0de;
+    color: white;
+}

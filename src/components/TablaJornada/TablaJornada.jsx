@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import FilaPartido from '../FilaPartido/FilaPartido';
+import { AuthContext } from '../../context/AuthContext';
 import './TablaJornada.css';
 
 const TablaJornada = () => {
@@ -7,6 +8,8 @@ const TablaJornada = () => {
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
     const [jornadaSeleccionada, setJornadaSeleccionada] = useState(1); 
+
+    const { isAuthenticated } = useContext(AuthContext); 
 
     useEffect(() => {
         const obtenerPartidos = async () => {
@@ -29,8 +32,13 @@ const TablaJornada = () => {
 
         obtenerPartidos();
     }, [jornadaSeleccionada]); 
+
     const manejarCambioJornada = (event) => {
         setJornadaSeleccionada(event.target.value);
+    };
+
+    const manejarEdicion = () => {
+        alert("Redirigiendo a la página de edición...");
     };
 
     return (
@@ -56,7 +64,9 @@ const TablaJornada = () => {
             ) : (
                 <table className="tabla-jornada-table">
                     <thead>
-                        <tr></tr>
+                        <tr>
+                        
+                        </tr>
                     </thead>
                     <tbody>
                         {partidos.map((partido) => (
@@ -64,6 +74,12 @@ const TablaJornada = () => {
                         ))}
                     </tbody>
                 </table>
+            )}
+            {isAuthenticated && ( 
+                <div className="editar-resultados-icono" onClick={manejarEdicion}>
+                    <i className="fas fa-edit"></i> 
+                    <p>Editar resultados jornada</p>
+                </div>
             )}
         </div>
     );
