@@ -7,20 +7,17 @@ const TablaJornada = () => {
     const [partidos, setPartidos] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [error, setError] = useState(null);
-    const [jornadaSeleccionada, setJornadaSeleccionada] = useState(1); 
-
-    const { isAuthenticated } = useContext(AuthContext); 
+    const [jornadaSeleccionada, setJornadaSeleccionada] = useState(1);
+    const { isAuthenticated } = useContext(AuthContext);
 
     useEffect(() => {
         const obtenerPartidos = async () => {
             try {
                 setCargando(true);
                 const respuesta = await fetch(`http://localhost:8000/api/partidos?jornada=${jornadaSeleccionada}`);
-                
                 if (!respuesta.ok) {
                     throw new Error('Error al obtener los partidos');
                 }
-
                 const datos = await respuesta.json();
                 setPartidos(datos);
             } catch (error) {
@@ -29,16 +26,39 @@ const TablaJornada = () => {
                 setCargando(false);
             }
         };
-
         obtenerPartidos();
-    }, [jornadaSeleccionada]); 
+    }, [jornadaSeleccionada]);
 
     const manejarCambioJornada = (event) => {
         setJornadaSeleccionada(event.target.value);
     };
 
-    const manejarEdicion = () => {
-        alert("Redirigiendo a la página de edición...");
+    const actualizarPartido = async (partidoId, golesLocal, golesVisitante) => {
+        try {
+            const respuesta = await fetch(`http://localhost:8000/api/partidos/${partidoId}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    goles_local: golesLocal,
+                    goles_visitante: golesVisitante,
+                }),
+            });
+
+            if (!respuesta.ok) {
+                throw new Error('Error al actualizar el partido');
+            }
+            
+            setPartidos((prevPartidos) =>
+                prevPartidos.map((p) =>
+                    p.id === partidoId ? { ...p, goles_local: golesLocal, goles_visitante: golesVisitante } : p
+                )
+            );
+        } catch (error) {
+            console.error('Error al actualizar el partido:', error);
+            alert('Hubo un error al actualizar el partido');
+        }
     };
 
     return (
@@ -63,23 +83,12 @@ const TablaJornada = () => {
                 <p className="mensaje-error">{error}</p>
             ) : (
                 <table className="tabla-jornada-table">
-                    <thead>
-                        <tr>
-                        
-                        </tr>
-                    </thead>
                     <tbody>
                         {partidos.map((partido) => (
-                            <FilaPartido key={partido.id} partido={partido} />
+                            <FilaPartido key={partido.id} partido={partido} actualizarPartido={actualizarPartido} />
                         ))}
                     </tbody>
                 </table>
-            )}
-            {isAuthenticated && ( 
-                <div className="editar-resultados-icono" onClick={manejarEdicion}>
-                    <i className="fas fa-edit"></i> 
-                    <p>Editar resultados jornada</p>
-                </div>
             )}
         </div>
     );
