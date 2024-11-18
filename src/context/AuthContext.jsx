@@ -14,11 +14,12 @@ const AuthProvider = ({ children }) => {
 
     const verificarToken = async (token) => {
         try {
-            const response = await fetch('http://localhost:8000/api/user', {
+            const response = await fetch("https://canboada.purusistemas.com/api/user", { 
                 headers: {
                     Authorization: `Bearer ${token}`,
                 },
             });
+            
 
             if (response.ok) {
                 setIsAuthenticated(true);
