@@ -12,13 +12,13 @@ const LoginPage = () => {
     const handleLogin = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch('http://localhost:8000/api/login', {
+            const response = await fetch("https://canboada.purusistemas.com/api/login", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({ email: username, password: password }),
-            });
+            });                      
 
             if (!response.ok) {
                 throw new Error('Usuario o contraseña incorrectos');

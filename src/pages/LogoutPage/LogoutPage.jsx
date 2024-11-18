@@ -10,13 +10,14 @@ const LogoutPage = () => {
     const handleLogout = async () => {
         try {
             const token = localStorage.getItem('authToken');
-            const response = await fetch('http://localhost:8000/api/logout', {
+            const response = await fetch("https://canboada.purusistemas.com/api/logout", { 
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     Authorization: `Bearer ${token}`,
                 },
             });
+            
 
             if (!response.ok) {
                 throw new Error('Error al cerrar sesión.');

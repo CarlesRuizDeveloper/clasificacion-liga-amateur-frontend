@@ -12,12 +12,12 @@ const AutoLogout = () => {
             if (!token) return;
 
             try {
-                const response = await fetch('http://localhost:8000/api/user', {
+                const response = await fetch("https://canboada.purusistemas.com/api/user", { 
                     headers: {
                         Authorization: `Bearer ${token}`,
                     },
                 });
-
+                
                 if (!response.ok) {
                     throw new Error('Token inválido');
                 }

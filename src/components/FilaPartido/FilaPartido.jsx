@@ -14,7 +14,7 @@ const FilaPartido = ({ partido }) => {
 
     const handleGuardarClick = async () => {
         try {
-            const response = await fetch(`http://localhost:8000/api/partidos/${partido.id}`, {
+            const response = await fetch("https://canboada.purusistemas.com/api/partidos/${partido.id}", {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',

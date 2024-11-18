@@ -11,7 +11,8 @@ const TablaLiga = () => {
         const obtenerClasificacion = async () => {
             try {
                 setCargando(true);
-                const respuesta = await fetch('http://localhost:8000/api/clasificacion/ultima');
+                const respuesta = await fetch("https://canboada.purusistemas.com/api/clasificacion/ultima");
+
                 if (!respuesta.ok) {
                     throw new Error('Error al obtener los datos de la clasificación de la última jornada');
                 }

@@ -14,7 +14,9 @@ const TablaJornada = () => {
         const obtenerPartidos = async () => {
             try {
                 setCargando(true);
-                const respuesta = await fetch(`http://localhost:8000/api/partidos?jornada=${jornadaSeleccionada}`);
+                const respuesta = await fetch(`https://canboada.purusistemas.com/api/partidos?jornada=${jornadaSeleccionada}`);
+
+
                 if (!respuesta.ok) {
                     throw new Error('Error al obtener los partidos');
                 }
@@ -35,7 +37,7 @@ const TablaJornada = () => {
 
     const actualizarPartido = async (partidoId, golesLocal, golesVisitante) => {
         try {
-            const respuesta = await fetch(`http://localhost:8000/api/partidos/${partidoId}`, {
+            const respuesta = await fetch(`https://canboada.purusistemas.com/api/partidos/${partidoId}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
