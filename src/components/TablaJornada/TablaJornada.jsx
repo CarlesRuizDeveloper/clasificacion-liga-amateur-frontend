@@ -35,6 +35,25 @@ const TablaJornada = () => {
         setJornadaSeleccionada(event.target.value);
     };
 
+    useEffect(() => {
+        const obtenerUltimaJornada = async () => {
+            try {
+                const respuesta = await fetch('https://canboada.purusistemas.com/api/ultima-jornada');
+                if (!respuesta.ok) {
+                    throw new Error('Error al obtener la última jornada jugada');
+                }
+                const { ultima_jornada } = await respuesta.json();
+                setJornadaSeleccionada(ultima_jornada || 1); 
+            } catch (error) {
+                console.error('Error al obtener la última jornada jugada:', error);
+                setJornadaSeleccionada(1); 
+            }
+        };
+    
+        obtenerUltimaJornada();
+    }, []);
+    
+
     const actualizarPartido = async (partidoId, golesLocal, golesVisitante) => {
         try {
             const respuesta = await fetch(`https://canboada.purusistemas.com/api/partidos/${partidoId}`, {
@@ -72,7 +91,7 @@ const TablaJornada = () => {
                     onChange={manejarCambioJornada}
                     className="selector-jornada"
                 >
-                    {[...Array(10).keys()].map((jornada) => (
+                    {[...Array(14).keys()].map((jornada) => (
                         <option key={jornada + 1} value={jornada + 1}>
                             Jornada {jornada + 1}
                         </option>

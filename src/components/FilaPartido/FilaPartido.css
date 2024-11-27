@@ -6,6 +6,7 @@
 
 .nombre-equipo-td {
   max-width: 50px;
+  font-size: bold;
 }
 
 .escudo-equipo-local, .escudo-equipo-visitante {
@@ -27,6 +28,10 @@
   min-width: 60px;
 }
 
+.pts-fed{
+  margin: 2px;
+}
+
 .resultado-y-icono {
   display: flex;
   flex-direction: column;
@@ -34,7 +39,7 @@
 }
 
 .resultado-texto {
-  margin-bottom: 5px;
+  margin-bottom: 0;
   font-size: 0.8rem;
   font-weight: bold;
 }
@@ -62,9 +67,15 @@
 }
 
 .editar-resultado-inputs {
-  display: flex;
+  display: table-column;
   gap: 5px; 
   align-items: center;
+}
+
+.editar-resultado-inputs input {
+margin-left: 2px;
+padding: 1px;
+width: 30%;
 }
 
 .input-goles {
@@ -104,4 +115,10 @@
     font-size: 0.8rem;
     padding: 8px;
   }
+
+  .editar-resultado-inputs input {
+    margin-left: 10px;
+    padding: 1px;
+    width: 10%;
+    }
 }

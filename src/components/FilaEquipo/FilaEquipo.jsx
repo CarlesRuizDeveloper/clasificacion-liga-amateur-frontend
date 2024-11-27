@@ -19,6 +19,7 @@ const FilaEquipo = ({ equipo, index, tipo }) => {
         return (
             <tr className="fila-equipo">
                 <td>{equipo.pj}</td>
+                <td>{equipo.pj}</td>
                 <td>{equipo.pg}</td>
                 <td>{equipo.pe}</td>
                 <td>{equipo.pp}</td>

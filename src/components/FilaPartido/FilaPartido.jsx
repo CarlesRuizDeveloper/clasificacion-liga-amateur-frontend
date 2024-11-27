@@ -1,9 +1,9 @@
 import React, { useState, useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext'; 
+import { AuthContext } from '../../context/AuthContext';
 import './FilaPartido.css';
 
 const FilaPartido = ({ partido }) => {
-    const { isAuthenticated } = useContext(AuthContext); 
+    const { isAuthenticated } = useContext(AuthContext);
     const [editando, setEditando] = useState(false);
     const [golesLocal, setGolesLocal] = useState(partido.goles_local);
     const [golesVisitante, setGolesVisitante] = useState(partido.goles_visitante);
@@ -18,7 +18,7 @@ const FilaPartido = ({ partido }) => {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`, 
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`,
                 },
                 body: JSON.stringify({
                     equipo_local_id: partido.equipo_local_id,
@@ -55,16 +55,30 @@ const FilaPartido = ({ partido }) => {
             </td>
             <td className="nombre-equipo-td">{partido.equipo_local.nombre}</td>
             <td className="resultado-partido">
+                <p className='pts-fed'>Resultado</p>
                 {editando ? (
                     <div className="editar-resultado">
                         <div className="editar-resultado-inputs">
+                            <p>Goles</p>
                             <input
                                 type="number"
                                 className="input-goles"
                                 value={golesLocal !== null ? golesLocal : ''}
                                 onChange={(e) => setGolesLocal(e.target.value)}
                             />
-                            <span>-</span>
+                            <input
+                                type="number"
+                                className="input-goles"
+                                value={golesVisitante !== null ? golesVisitante : ''}
+                                onChange={(e) => setGolesVisitante(e.target.value)}
+                            />
+                            <p>Pts Fed</p>
+                            <input
+                                type="number"
+                                className="input-goles"
+                                value={golesLocal !== null ? golesLocal : ''}
+                                onChange={(e) => setGolesLocal(e.target.value)}
+                            />
                             <input
                                 type="number"
                                 className="input-goles"
@@ -81,7 +95,9 @@ const FilaPartido = ({ partido }) => {
                                 ? `${partido.goles_local} - ${partido.goles_visitante}`
                                 : 'Por jugar'}
                         </span>
-                        {isAuthenticated && ( 
+                        <p className='pts-fed'>Ptos Fed</p>
+                        <p className='pts-fed'>15-6</p>
+                        {isAuthenticated && (
                             <div className="editar-icono-contenedor" onClick={handleEditarClick}>
                                 <i className="fas fa-edit editar-icono"></i>
                             </div>
