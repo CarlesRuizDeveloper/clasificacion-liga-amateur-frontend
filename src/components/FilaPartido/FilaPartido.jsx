@@ -7,6 +7,8 @@ const FilaPartido = ({ partido }) => {
     const [editando, setEditando] = useState(false);
     const [golesLocal, setGolesLocal] = useState(partido.goles_local);
     const [golesVisitante, setGolesVisitante] = useState(partido.goles_visitante);
+    const [ptsFedLocal, setPtsFedLocal] = useState(partido.pts_fed_local);
+    const [ptsFedVisitante, setPtsFedVisitante] = useState(partido.pts_fed_visitante);
 
     const handleEditarClick = () => {
         setEditando(true);
@@ -14,7 +16,7 @@ const FilaPartido = ({ partido }) => {
 
     const handleGuardarClick = async () => {
         try {
-            const response = await fetch("https://canboada.purusistemas.com/api/partidos/${partido.id}", {
+            const response = await fetch(`https://canboada.purusistemas.com/api/partidos/${partido.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -23,10 +25,10 @@ const FilaPartido = ({ partido }) => {
                 body: JSON.stringify({
                     equipo_local_id: partido.equipo_local_id,
                     equipo_visitante_id: partido.equipo_visitante_id,
-                    fecha: partido.fecha,
-                    hora: partido.hora,
                     goles_local: golesLocal,
                     goles_visitante: golesVisitante,
+                    pts_fed_local: ptsFedLocal,
+                    pts_fed_visitante: ptsFedVisitante,
                 }),
             });
 
@@ -76,14 +78,14 @@ const FilaPartido = ({ partido }) => {
                             <input
                                 type="number"
                                 className="input-goles"
-                                value={golesLocal !== null ? golesLocal : ''}
-                                onChange={(e) => setGolesLocal(e.target.value)}
+                                value={ptsFedLocal !== null ? ptsFedLocal : ''}
+                                onChange={(e) => setPtsFedLocal(e.target.value)}
                             />
                             <input
                                 type="number"
                                 className="input-goles"
-                                value={golesVisitante !== null ? golesVisitante : ''}
-                                onChange={(e) => setGolesVisitante(e.target.value)}
+                                value={ptsFedVisitante !== null ? ptsFedVisitante : ''}
+                                onChange={(e) => setPtsFedVisitante(e.target.value)}
                             />
                         </div>
                         <button className="guardar-boton" onClick={handleGuardarClick}>Guardar</button>
@@ -96,7 +98,7 @@ const FilaPartido = ({ partido }) => {
                                 : 'Por jugar'}
                         </span>
                         <p className='pts-fed'>Ptos Fed</p>
-                        <p className='pts-fed'>15-6</p>
+                        <p className='pts-fed'>{`${partido.pts_fed_local} - ${partido.pts_fed_visitante}`}</p>
                         {isAuthenticated && (
                             <div className="editar-icono-contenedor" onClick={handleEditarClick}>
                                 <i className="fas fa-edit editar-icono"></i>

@@ -11,6 +11,7 @@ const FilaEquipo = ({ equipo, index, tipo }) => {
                     {equipo.equipo}
                 </td>
                 <td className="pts">{equipo.pts}</td>
+                <td className="pts">{equipo.pts_fed}</td>
             </tr>
         );
     }
@@ -18,7 +19,6 @@ const FilaEquipo = ({ equipo, index, tipo }) => {
     if (tipo === "desplazable") {
         return (
             <tr className="fila-equipo">
-                <td>{equipo.pj}</td>
                 <td>{equipo.pj}</td>
                 <td>{equipo.pg}</td>
                 <td>{equipo.pe}</td>
