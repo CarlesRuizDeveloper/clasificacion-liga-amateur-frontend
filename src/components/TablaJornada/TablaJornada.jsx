@@ -1,39 +1,11 @@
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import FilaPartido from '../FilaPartido/FilaPartido';
-import { AuthContext } from '../../context/AuthContext';
+import useJornada from '../../hooks/useJornada'; 
 import './TablaJornada.css';
 
 const TablaJornada = () => {
-    const [partidos, setPartidos] = useState([]);
-    const [cargando, setCargando] = useState(true);
-    const [error, setError] = useState(null);
-    const [jornadaSeleccionada, setJornadaSeleccionada] = useState(1);
-    const { isAuthenticated } = useContext(AuthContext);
-
-    useEffect(() => {
-        const obtenerPartidos = async () => {
-            try {
-                setCargando(true);
-                const respuesta = await fetch(`https://canboada.purusistemas.com/api/partidos?jornada=${jornadaSeleccionada}`);
-
-
-                if (!respuesta.ok) {
-                    throw new Error('Error al obtener los partidos');
-                }
-                const datos = await respuesta.json();
-                setPartidos(datos);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setCargando(false);
-            }
-        };
-        obtenerPartidos();
-    }, [jornadaSeleccionada]);
-
-    const manejarCambioJornada = (event) => {
-        setJornadaSeleccionada(event.target.value);
-    };
+    const [jornadaSeleccionada, setJornadaSeleccionada] = useState(null);
+    const [ultimaJornada, setUltimaJornada] = useState(1);
 
     useEffect(() => {
         const obtenerUltimaJornada = async () => {
@@ -43,43 +15,20 @@ const TablaJornada = () => {
                     throw new Error('Error al obtener la última jornada jugada');
                 }
                 const { ultima_jornada } = await respuesta.json();
-                setJornadaSeleccionada(ultima_jornada || 1); 
+                setJornadaSeleccionada(ultima_jornada || 1);
+                setUltimaJornada(ultima_jornada || 1);
             } catch (error) {
                 console.error('Error al obtener la última jornada jugada:', error);
-                setJornadaSeleccionada(1); 
+                setJornadaSeleccionada(1);
             }
         };
-    
         obtenerUltimaJornada();
     }, []);
-    
 
-    const actualizarPartido = async (partidoId, golesLocal, golesVisitante) => {
-        try {
-            const respuesta = await fetch(`https://canboada.purusistemas.com/api/partidos/${partidoId}`, {
-                method: 'PUT',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    goles_local: golesLocal,
-                    goles_visitante: golesVisitante,
-                }),
-            });
+    const { partidos, cargando, error } = useJornada(jornadaSeleccionada); 
 
-            if (!respuesta.ok) {
-                throw new Error('Error al actualizar el partido');
-            }
-            
-            setPartidos((prevPartidos) =>
-                prevPartidos.map((p) =>
-                    p.id === partidoId ? { ...p, goles_local: golesLocal, goles_visitante: golesVisitante } : p
-                )
-            );
-        } catch (error) {
-            console.error('Error al actualizar el partido:', error);
-            alert('Hubo un error al actualizar el partido');
-        }
+    const manejarCambioJornada = (event) => {
+        setJornadaSeleccionada(event.target.value);
     };
 
     return (
@@ -87,7 +36,7 @@ const TablaJornada = () => {
             <div className="selector-jornada-contenedor">
                 <select
                     id="jornada-select"
-                    value={jornadaSeleccionada}
+                    value={jornadaSeleccionada || ultimaJornada}
                     onChange={manejarCambioJornada}
                     className="selector-jornada"
                 >
@@ -106,7 +55,7 @@ const TablaJornada = () => {
                 <table className="tabla-jornada-table">
                     <tbody>
                         {partidos.map((partido) => (
-                            <FilaPartido key={partido.id} partido={partido} actualizarPartido={actualizarPartido} />
+                            <FilaPartido key={partido.id} partido={partido} />
                         ))}
                     </tbody>
                 </table>

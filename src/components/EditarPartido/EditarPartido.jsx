@@ -1,34 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import useJornada from '../../hooks/useJornada'; 
 import './EditarPartido.css';
 
 const EditarPartido = () => {
     const { jornadaId } = useParams();
-    const [partidos, setPartidos] = useState([]);
-    const [cargando, setCargando] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const obtenerPartidos = async () => {
-            try {
-                setCargando(true);
-                const respuesta = await fetch(`https://canboada.purusistemas.com/api/partidos?jornada=${jornadaId}`);
-                if (!respuesta.ok) {
-                    throw new Error('Error al obtener los partidos');
-                }
-                const datos = await respuesta.json();
-                setPartidos(datos);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setCargando(false);
-            }
-        };
-        obtenerPartidos();
-    }, [jornadaId]);
+    const { partidos, cargando, error } = useJornada(jornadaId); 
+    const [partidosEditados, setPartidosEditados] = useState([]);
 
     const manejarCambioGoles = (partidoId, equipo, value) => {
-        setPartidos((prevPartidos) =>
+        setPartidosEditados((prevPartidos) =>
             prevPartidos.map((p) =>
                 p.id === partidoId ? { ...p, [equipo]: parseInt(value) || 0 } : p
             )
@@ -36,7 +17,7 @@ const EditarPartido = () => {
     };
 
     const guardarCambios = async (partidoId) => {
-        const partido = partidos.find((p) => p.id === partidoId);
+        const partido = partidosEditados.find((p) => p.id === partidoId);
         if (!partido) return;
 
         try {
