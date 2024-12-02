@@ -128,15 +128,13 @@ Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENS
 
 ## 🛠️ Herramientas Utilizadas
 
-- <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="30" height="30"> **React**: Framework de JavaScript para construir la interfaz de usuario.
-- <img src="https://vitejs.dev/logo.svg" alt="Vite" width="30" height="30"> **Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
-- <img src="https://reactrouter.com/favicon.ico" alt="React Router" width="30" height="30"> **React Router**: Manejo de la navegación y rutas dentro de la aplicación.
+- &#x20;**React**: Framework de JavaScript para construir la interfaz de usuario.
+- &#x20;**Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
+- &#x20;**React Router**: Manejo de la navegación y rutas dentro de la aplicación.
 - **Fetch API**: Para realizar solicitudes HTTP a la API.
-
-
 
   💌 Contacto
 - Para cualquier consulta o sugerencia, puedes contactarme a través de [LinkedIn](https://www.linkedin.com/in/carles-ruiz-montejo-developer/) o por email en [carlesruizm@gmail.com](mailto\:carlesruizm@gmail.com).
 
-¡Gracias por visitar este proyecto y esperamos que te sea útil! 🍾🎉
+¡Gracias por visitar este proyecto y espero que te sea útil! 🍾🎉
 
