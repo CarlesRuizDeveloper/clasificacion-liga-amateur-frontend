@@ -1,35 +1,17 @@
-import { useEffect, useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import { useEffect } from 'react';
+import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 
 const AutoLogout = () => {
-    const { logout } = useContext(AuthContext);
+    const { logout, isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
-        const verificarAutenticacion = async () => {
-            const token = localStorage.getItem('authToken');
-            if (!token) return;
-
-            try {
-                const response = await fetch("https://canboada.purusistemas.com/api/user", { 
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                    },
-                });
-                
-                if (!response.ok) {
-                    throw new Error('Token inválido');
-                }
-            } catch (error) {
-                console.error('Token inválido:', error);
-                logout();
-                navigate('/login');
-            }
-        };
-
-        verificarAutenticacion();
-    }, [logout, navigate]);
+        if (!isAuthenticated) {
+            logout();
+            navigate('/login');
+        }
+    }, [isAuthenticated, logout, navigate]);
 
     return null;
 };
