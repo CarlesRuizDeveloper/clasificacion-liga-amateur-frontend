@@ -1,32 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import FilaEquipo from '../FilaEquipo/FilaEquipo';
+import useClasificacion from '../../hooks/useClasificacion';
 import './TablaLiga.css';
 
 const TablaLiga = () => {
-    const [equipos, setEquipos] = useState([]);
-    const [cargando, setCargando] = useState(true);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        const obtenerClasificacion = async () => {
-            try {
-                setCargando(true);
-                const respuesta = await fetch("https://canboada.purusistemas.com/api/clasificacion/ultima");
-
-                if (!respuesta.ok) {
-                    throw new Error('Error al obtener los datos de la clasificación de la última jornada');
-                }
-                const datos = await respuesta.json();
-                setEquipos(datos);
-            } catch (error) {
-                setError(error.message);
-            } finally {
-                setCargando(false);
-            }
-        };
-
-        obtenerClasificacion();
-    }, []);
+    const { equipos, cargando, error } = useClasificacion(); 
 
     return (
         <div className="tabla-liga-contenedor">
