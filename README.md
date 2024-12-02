@@ -1,4 +1,4 @@
-![Vista de la Aplicación en iPhone](./images/Analisis-iPhone-15-Pro-Max.jpg)
+![Vista de la Aplicación en iPhone](./public/images/Analisis-iPhone-15-Pro-Max.jpg)
 
 
 # Clasificación de Fútbol Can Boada
