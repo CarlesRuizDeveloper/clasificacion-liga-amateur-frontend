@@ -131,10 +131,11 @@ Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENS
 
 ## 🛠️ Herramientas Utilizadas
 
-- **React**: Framework de JavaScript para construir la interfaz de usuario.
-- **Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
-- **React Router**: Manejo de la navegación y rutas dentro de la aplicación.
+- <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="30" height="30"> **React**: Framework de JavaScript para construir la interfaz de usuario.
+- <img src="https://vitejs.dev/logo.svg" alt="Vite" width="30" height="30"> **Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
+- <img src="https://reactrouter.com/favicon.ico" alt="React Router" width="30" height="30"> **React Router**: Manejo de la navegación y rutas dentro de la aplicación.
 - **Fetch API**: Para realizar solicitudes HTTP a la API.
+
 
 
   💌 Contacto
