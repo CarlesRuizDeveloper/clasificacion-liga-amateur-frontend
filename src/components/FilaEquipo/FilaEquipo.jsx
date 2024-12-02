@@ -11,6 +11,7 @@ const FilaEquipo = ({ equipo, index, tipo }) => {
                     {equipo.equipo}
                 </td>
                 <td className="pts">{equipo.pts}</td>
+                <td className="pts">{equipo.pts_fed}</td>
             </tr>
         );
     }

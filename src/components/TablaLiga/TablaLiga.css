@@ -10,6 +10,7 @@
 
 .titulo-equipo {
   text-align: center;
+  max-width: 25%;
 }
 
 .tabla-liga {
@@ -19,14 +20,14 @@
 }
 
 .tabla-liga-fijo {
-  width: 69%;
+  width: 79%;
   border: none;
   flex: 0 0 auto;
   font-weight: bolder;
 }
 
 .tabla-liga-desplazable {
-  width: 31%;
+  width: 21%;
   overflow-x: auto;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 0 20px 20px 0;
@@ -39,7 +40,7 @@
 
 .fila-equipo td,
 .tabla-liga-table td {
-  padding: 12px;
+  padding: 5px;
   text-align: left;
   border-bottom: 1px solid #ddd;
   font-size: 0.7rem;
@@ -59,7 +60,12 @@
 
 .tabla-liga th:nth-child(3),
 .tabla-liga td:nth-child(3) {
-  width: 15%;
+  width: 3%;
+}
+
+.tabla-liga th:nth-child(4),
+.tabla-liga td:nth-child(4) {
+  width: 3%;
 }
 
 .nombre-equipo {
@@ -98,11 +104,23 @@
 
 @media (min-width: 890px) {
   .clasificacion-container {
-    min-width: 825px;
+    min-width: 850px;
   }
 
   .escudo-equipo {
     width: 50px;
     height: 50px;
   }
+}
+
+@media (min-width: 1024px) {
+  .clasificacion-container {
+    min-width: 850px;
+  }
+
+  .escudo-equipo {
+    width: 50px;
+    height: 50px;
+  }
+  
 }
