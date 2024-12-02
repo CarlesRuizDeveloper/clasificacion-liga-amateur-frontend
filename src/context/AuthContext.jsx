@@ -1,46 +1,10 @@
-import { createContext, useState, useEffect } from 'react';
+import { createContext } from 'react';
+import useAuth from '../hooks/useAuth';
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    useEffect(() => {
-        const token = localStorage.getItem('authToken');
-        if (token) {
-            verificarToken(token);
-        }
-    }, []);
-
-    const verificarToken = async (token) => {
-        try {
-            const response = await fetch("https://canboada.purusistemas.com/api/user", { 
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                },
-            });
-            
-
-            if (response.ok) {
-                setIsAuthenticated(true);
-            } else {
-                throw new Error('Token inválido');
-            }
-        } catch (error) {
-            console.error('Error al verificar el token:', error);
-            logout();
-        }
-    };
-
-    const login = (token) => {
-        localStorage.setItem('authToken', token);
-        setIsAuthenticated(true);
-    };
-
-    const logout = () => {
-        localStorage.removeItem('authToken');
-        setIsAuthenticated(false);
-    };
+    const { isAuthenticated, login, logout } = useAuth();
 
     return (
         <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
