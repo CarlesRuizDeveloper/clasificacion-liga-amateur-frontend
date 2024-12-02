@@ -131,10 +131,11 @@ Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENS
 
 ## 🛠️ Herramientas Utilizadas
 
-- &#x20;**React**: Framework de JavaScript para construir la interfaz de usuario.
-- &#x20;**Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
-- &#x20;**React Router**: Manejo de la navegación y rutas dentro de la aplicación.
+- **React**: Framework de JavaScript para construir la interfaz de usuario.
+- **Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
+- **React Router**: Manejo de la navegación y rutas dentro de la aplicación.
 - **Fetch API**: Para realizar solicitudes HTTP a la API.
+
 
   💌 Contacto
 - Para cualquier consulta o sugerencia, puedes contactarme a través de [LinkedIn](https://www.linkedin.com/in/carles-ruiz-montejo-developer/) o por email en [carlesruizm@gmail.com](mailto\:carlesruizm@gmail.com).
