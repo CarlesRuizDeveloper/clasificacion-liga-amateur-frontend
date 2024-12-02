@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { AuthContext } from '../../context/AuthContext';
 import './FilaPartido.css';
 
-const FilaPartido = ({ partido }) => {
+const FilaPartido = ({ partido, onPartidoUpdated }) => {
     const { isAuthenticated } = useContext(AuthContext);
     const [editando, setEditando] = useState(false);
     const [golesLocal, setGolesLocal] = useState(partido.goles_local);
@@ -38,6 +38,9 @@ const FilaPartido = ({ partido }) => {
 
             alert('Cambios guardados correctamente');
             setEditando(false);
+
+            onPartidoUpdated();
+
         } catch (error) {
             console.error('Error al guardar los cambios:', error);
             alert('Hubo un error al guardar los cambios');
@@ -57,7 +60,6 @@ const FilaPartido = ({ partido }) => {
             </td>
             <td className="nombre-equipo-td">{partido.equipo_local.nombre}</td>
             <td className="resultado-partido">
-                <p className='pts-fed'>Resultado</p>
                 {editando ? (
                     <div className="editar-resultado">
                         <div className="editar-resultado-inputs">
@@ -92,13 +94,18 @@ const FilaPartido = ({ partido }) => {
                     </div>
                 ) : (
                     <div className="resultado-y-icono">
-                        <span className="resultado-texto">
-                            {partido.goles_local !== null && partido.goles_visitante !== null
-                                ? `${partido.goles_local} - ${partido.goles_visitante}`
-                                : 'Por jugar'}
-                        </span>
-                        <p className='pts-fed'>Ptos Fed</p>
-                        <p className='pts-fed'>{`${partido.pts_fed_local} - ${partido.pts_fed_visitante}`}</p>
+                        {partido.goles_local !== null && partido.goles_visitante !== null ? (
+                            <>
+                                <p className='pts-fed'>Resultado</p>
+                                <span className="resultado-texto">
+                                    {`${partido.goles_local} - ${partido.goles_visitante}`}
+                                </span>
+                                <p className='pts-fed'>Ptos Fed</p>
+                                <p className='pts-fed'>{`${partido.pts_fed_local} - ${partido.pts_fed_visitante}`}</p>
+                            </>
+                        ) : (
+                            <span className="resultado-texto">Por jugar</span>
+                        )}
                         {isAuthenticated && (
                             <div className="editar-icono-contenedor" onClick={handleEditarClick}>
                                 <i className="fas fa-edit editar-icono"></i>

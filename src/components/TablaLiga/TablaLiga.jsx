@@ -43,7 +43,7 @@ const TablaLiga = () => {
                                     <th></th>
                                     <th className="titulo-equipo">Equipo</th>
                                     <th>Pts</th>
-                                    <th>Pts Fed</th>
+                                    <th>Fed</th>
                                 </tr>
                             </thead>
                             <tbody>
