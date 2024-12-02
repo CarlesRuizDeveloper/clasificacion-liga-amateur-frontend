@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import { AuthContext } from '../../context/AuthContext';
+import React from 'react';
+import useAuth from '../../hooks/useAuth';
 import { useNavigate } from 'react-router-dom';
 import './LogoutPage.css';
 
 const LogoutPage = () => {
-    const { logout } = useContext(AuthContext);
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
     const handleLogout = async () => {
@@ -17,7 +17,6 @@ const LogoutPage = () => {
                     Authorization: `Bearer ${token}`,
                 },
             });
-            
 
             if (!response.ok) {
                 throw new Error('Error al cerrar sesión.');
