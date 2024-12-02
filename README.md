@@ -1,3 +1,6 @@
+![Vista de la Aplicación en iPhone](./images/Analisis-iPhone-15-Pro-Max.jpg)
+
+
 # Clasificación de Fútbol Can Boada
 
 **Clasificación de Fútbol** nace del encargo de un amigo para llevar la clasificación de su liga de fútbol. Esta aplicación web permite mostrar la clasificación de los equipos y los resultados de las jornadas de su liga.&#x20;
