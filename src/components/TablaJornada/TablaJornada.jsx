@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FilaPartido from '../FilaPartido/FilaPartido';
 import useJornada from '../../hooks/useJornada'; 
 import './TablaJornada.css';
 
 const TablaJornada = () => {
-    const [jornadaSeleccionada, setJornadaSeleccionada] = useState(1);
+    const [jornadaSeleccionada, setJornadaSeleccionada] = useState(null);
+    const [ultimaJornada, setUltimaJornada] = useState(1);
+
+    useEffect(() => {
+        const obtenerUltimaJornada = async () => {
+            try {
+                const respuesta = await fetch('https://canboada.purusistemas.com/api/ultima-jornada');
+                if (!respuesta.ok) {
+                    throw new Error('Error al obtener la última jornada jugada');
+                }
+                const { ultima_jornada } = await respuesta.json();
+                setJornadaSeleccionada(ultima_jornada || 1);
+                setUltimaJornada(ultima_jornada || 1);
+            } catch (error) {
+                console.error('Error al obtener la última jornada jugada:', error);
+                setJornadaSeleccionada(1);
+            }
+        };
+        obtenerUltimaJornada();
+    }, []);
+
     const { partidos, cargando, error } = useJornada(jornadaSeleccionada); 
 
     const manejarCambioJornada = (event) => {
@@ -16,7 +36,7 @@ const TablaJornada = () => {
             <div className="selector-jornada-contenedor">
                 <select
                     id="jornada-select"
-                    value={jornadaSeleccionada}
+                    value={jornadaSeleccionada || ultimaJornada}
                     onChange={manejarCambioJornada}
                     className="selector-jornada"
                 >
