@@ -9,6 +9,14 @@ Los usuarios pueden visualizar la clasificación y los resultados, mientras que 
 
 La aplicación está desarrollada con **React** y **Vite**, conectada con una API REST creada por mí y es **totalmente responsive**.
 
+## 🛠️ Herramientas Utilizadas
+
+- <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="30" height="30"> **React**: Framework de JavaScript para construir la interfaz de usuario.
+- <img src="https://vitejs.dev/logo.svg" alt="Vite" width="30" height="30"> **Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
+- <img src="https://reactrouter.com/favicon.ico" alt="React Router" width="30" height="30"> **React Router**: Manejo de la navegación y rutas dentro de la aplicación.
+- **Fetch API**: Para realizar solicitudes HTTP a la API.
+
+
 ## ⭐ Características
 
 - 🛠️ **Autenticación de Usuario**: Inicio y cierre de sesión para los administradores que pueden modificar los resultados.
@@ -128,13 +136,6 @@ La estructura del proyecto es la siguiente:
 ## 📑 Licencia
 
 Este proyecto está licenciado bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE) para más información.
-
-## 🛠️ Herramientas Utilizadas
-
-- <img src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg" alt="React" width="30" height="30"> **React**: Framework de JavaScript para construir la interfaz de usuario.
-- <img src="https://vitejs.dev/logo.svg" alt="Vite" width="30" height="30"> **Vite**: Herramienta de desarrollo rápida para construir proyectos modernos de frontend.
-- <img src="https://reactrouter.com/favicon.ico" alt="React Router" width="30" height="30"> **React Router**: Manejo de la navegación y rutas dentro de la aplicación.
-- **Fetch API**: Para realizar solicitudes HTTP a la API.
 
 
 
