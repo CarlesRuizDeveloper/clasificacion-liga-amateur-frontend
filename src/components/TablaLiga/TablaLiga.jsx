@@ -21,7 +21,6 @@ const TablaLiga = () => {
                                     <th></th>
                                     <th className="titulo-equipo">Equipo</th>
                                     <th>Pts</th>
-                                    <th>Fed</th>
                                 </tr>
                             </thead>
                             <tbody>
