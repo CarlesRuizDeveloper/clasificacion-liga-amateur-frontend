@@ -6,7 +6,7 @@
 
 .nombre-equipo-td {
   max-width: 50px;
-  font-size: bold;
+  font-weight: bold;
 }
 
 .escudo-equipo-local, .escudo-equipo-visitante {

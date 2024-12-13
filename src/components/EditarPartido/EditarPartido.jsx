@@ -31,12 +31,8 @@ const EditarPartido = () => {
                     goles_visitante: partido.goles_visitante,
                 }),
             });
-
-            if (!respuesta.ok) {
-                throw new Error('Error al guardar los cambios');
-            }
-
             alert('Cambios guardados correctamente');
+            
         } catch (error) {
             console.error('Error al guardar los cambios:', error);
             alert('Hubo un error al guardar los cambios');
